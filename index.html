@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
   <!-- Local CSS — single merged stylesheet -->
-  <link rel="stylesheet" href="code/css/style.css">
+  <link rel="stylesheet" href="code/css/style.css?v=2">
   <link rel="stylesheet" href="code/css/editmode.css">
 </head>
 
@@ -276,47 +276,54 @@
         
         <!-- Slide 1 -->
         <div class="ad-slide active">
-          <div class="ad-slide-image">
-            <img src="images/products/Rabihin-dsr-img.PNG" alt="Rabihin-DSR">
-          </div>
-          <div class="ad-slide-content">
-            <span class="ad-badge">Featured Product</span>
+          <div class="ad-slide-content" style="background-color: #a85f9e;">
             <h3 data-editable="ad1-title">Rabihin-DSR</h3>
             <p data-editable="ad1-desc">Advanced Gastric Acid Control. Enteric Coated Rabeprazole Sodium & Domperidone SR Capsules for effective and sustained relief from acidity and acid reflux.</p>
-            <a href="#" class="ad-btn" onclick="document.getElementById('btn-rabihin').click(); return false;">Learn More <i class="fas fa-arrow-right"></i></a>
+            <p data-editable="ad1-subtext" style="font-size: 13px; margin-top: 20px; opacity: 0.9;">Provides a new lease of life to Indian patients suffering from acidity, who did not have access to this revolutionary therapy, so far.</p>
+            <!-- Custom animated dots for decoration -->
+            <div class="ad-decoration-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="ad-slide-image" style="background: linear-gradient(135deg, #f5f0f6, #ffffff);">
+            <img src="images/products/Rabihin-dsr-img.PNG" alt="Rabihin-DSR">
           </div>
         </div>
 
         <!-- Slide 2 -->
         <div class="ad-slide">
-          <div class="ad-slide-image">
-            <img src="images/products/ointment-img.PNG" alt="Hincure Ointment">
-          </div>
-          <div class="ad-slide-content">
-            <span class="ad-badge">Ayurvedic Remedy</span>
+          <div class="ad-slide-content" style="background-color: #00897b;">
             <h3 data-editable="ad2-title">Hincure Ointment</h3>
             <p data-editable="ad2-desc">100% natural Ayurvedic formulation for accelerated skin healing. Soothes irritation, redness, and inflammation safely for all skin types.</p>
-            <a href="#" class="ad-btn" onclick="document.getElementById('btn-hincure').click(); return false;">Learn More <i class="fas fa-arrow-right"></i></a>
+            <p data-editable="ad2-subtext" style="font-size: 13px; margin-top: 20px; opacity: 0.9;">A trusted remedy trusted by doctors globally to provide rapid relief from skin ailments.</p>
+            <div class="ad-decoration-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="ad-slide-image" style="background: linear-gradient(135deg, #e0f2f1, #ffffff);">
+            <img src="images/products/ointment-img.PNG" alt="Hincure Ointment">
           </div>
         </div>
 
         <!-- Slide 3 -->
         <div class="ad-slide">
-          <div class="ad-slide-image">
-            <img src="images/products/joint-H-img.PNG" alt="Joint-H">
-          </div>
-          <div class="ad-slide-content">
-            <span class="ad-badge">Nutraceutical</span>
+          <div class="ad-slide-content" style="background-color: #0d47a1;">
             <h3 data-editable="ad3-title">Joint-H Supplements</h3>
             <p data-editable="ad3-desc">Scientifically advanced nutraceutical supplement formulated to support joint health, reduce discomfort, and improve overall mobility.</p>
-            <a href="#" class="ad-btn" onclick="document.getElementById('btn-jointh').click(); return false;">Learn More <i class="fas fa-arrow-right"></i></a>
+            <p data-editable="ad3-subtext" style="font-size: 13px; margin-top: 20px; opacity: 0.9;">Empowering a pain-free active lifestyle for individuals suffering from joint discomfort.</p>
+            <div class="ad-decoration-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="ad-slide-image" style="background: linear-gradient(135deg, #e3f2fd, #ffffff);">
+            <img src="images/products/joint-H-img.PNG" alt="Joint-H">
           </div>
         </div>
 
       </div>
       
       <!-- Slider Dots -->
-      <div class="ad-slider-dots" id="ad-slider-dots">
+      <div class="ad-slider-dots" id="ad-slider-dots" style="position: absolute; bottom: 20px; left: 20px;">
         <span class="ad-dot active" data-slide="0"></span>
         <span class="ad-dot" data-slide="1"></span>
         <span class="ad-dot" data-slide="2"></span>
