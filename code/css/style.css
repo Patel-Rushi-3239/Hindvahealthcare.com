@@ -3382,26 +3382,52 @@ body.loaded #loader {
   animation: shimmer 0.8s ease forwards;
 }
 /* --- Ad Slider Responsive --- */
+@media (max-width: 900px) {
+  .ad-slider-container {
+    height: 450px;
+  }
+  .ad-slide-content h3 {
+    font-size: 28px;
+  }
+}
+
 @media (max-width: 768px) {
+  .ad-slider-container {
+    height: 600px; /* Fixed height for mobile to fit stacked elements */
+  }
   .ad-slide {
     flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
-  .ad-slider-container {
-    height: auto;
-    min-height: 400px;
-  }
-  .ad-slide-image {
-    padding: 10px;
-  }
-  .ad-slide-image img {
-    max-height: 150px;
   }
   .ad-slide-content {
-    padding-right: 0;
+    flex: 0 0 55%;
+    padding: 40px 30px 20px 30px;
+    align-items: center;
+    text-align: center;
   }
   .ad-slide-content h3 {
     font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .ad-pill {
+    align-self: center;
+  }
+  .ad-explore-btn {
+    align-self: center;
+    margin-top: 15px;
+  }
+  .ad-decoration-dots {
+    display: none;
+  }
+  .ad-slide-image {
+    flex: 0 0 45%;
+    padding: 20px;
+  }
+  .ad-slide-image img {
+    max-height: 180px;
+  }
+  .ad-slider-dots {
+    bottom: 10px !important;
+    left: 50% !important;
+    transform: translateX(-50%);
   }
 }
