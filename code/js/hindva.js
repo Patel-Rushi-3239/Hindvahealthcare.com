@@ -1131,15 +1131,15 @@
   }
 
   if (adSlides.length > 0) {
-    // Auto slide every 4 seconds
-    adSlideInterval = setInterval(nextAdSlide, 4000);
+    // Auto slide every 5 seconds
+    adSlideInterval = setInterval(nextAdSlide, 5000);
 
     // Dot click handling
     adDots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
         clearInterval(adSlideInterval); // Stop auto-slide when user interacts
         goToAdSlide(index);
-        adSlideInterval = setInterval(nextAdSlide, 4000); // Restart auto-slide
+        adSlideInterval = setInterval(nextAdSlide, 5000); // Restart auto-slide
       });
     });
     
@@ -1148,7 +1148,7 @@
     if (sliderContainer) {
       sliderContainer.addEventListener('mouseenter', () => clearInterval(adSlideInterval));
       sliderContainer.addEventListener('mouseleave', () => {
-        adSlideInterval = setInterval(nextAdSlide, 4000);
+        adSlideInterval = setInterval(nextAdSlide, 5000);
       });
     }
   }
