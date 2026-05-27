@@ -1063,6 +1063,139 @@ body.loaded #loader {
 /* ------------------------------------------------------------
    PRODUCTS SECTION
    ------------------------------------------------------------ */
+/* --- Product Ad Slider --- */
+.product-ad-slider {
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-slider-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.ad-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  opacity: 0;
+  transform: translateX(30px);
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ad-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.ad-slide-image {
+  flex: 0 0 45%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(13, 71, 161, 0.03), rgba(0, 191, 88, 0.03));
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.ad-slide-image img {
+  max-width: 90%;
+  max-height: 240px;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.1));
+}
+
+.ad-slide-content {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.ad-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(0, 191, 88, 0.1);
+  color: #00a046;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.ad-slide-content h3 {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.ad-slide-content p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.ad-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0d47a1;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 10px 24px;
+  background: rgba(13, 71, 161, 0.05);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.ad-btn:hover {
+  background: #0d47a1;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(13, 71, 161, 0.2);
+}
+
+.ad-slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.ad-dot {
+  width: 10px;
+  height: 10px;
+  background: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ad-dot.active {
+  background: #0d47a1;
+  width: 24px;
+  border-radius: 10px;
+}
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -3222,4 +3355,28 @@ body.loaded #loader {
 
 .hover-shine:hover::after {
   animation: shimmer 0.8s ease forwards;
+}
+/* --- Ad Slider Responsive --- */
+@media (max-width: 768px) {
+  .ad-slide {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  .ad-slider-container {
+    height: auto;
+    min-height: 400px;
+  }
+  .ad-slide-image {
+    padding: 10px;
+  }
+  .ad-slide-image img {
+    max-height: 150px;
+  }
+  .ad-slide-content {
+    padding-right: 0;
+  }
+  .ad-slide-content h3 {
+    font-size: 24px;
+  }
 }

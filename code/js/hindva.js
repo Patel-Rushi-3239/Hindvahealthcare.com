@@ -1107,7 +1107,55 @@
 
 
   /* -------------------------------------------------
-     10. HERO MOUSE-FOLLOW GRADIENT (DISABLED)
+     10. PRODUCT AD SLIDER
+     ------------------------------------------------- */
+  const adSlides = document.querySelectorAll('.ad-slide');
+  const adDots = document.querySelectorAll('.ad-dot');
+  let currentAdSlide = 0;
+  let adSlideInterval;
+
+  function goToAdSlide(index) {
+    adSlides.forEach(slide => slide.classList.remove('active'));
+    adDots.forEach(dot => dot.classList.remove('active'));
+    
+    currentAdSlide = index;
+    if (currentAdSlide >= adSlides.length) currentAdSlide = 0;
+    if (currentAdSlide < 0) currentAdSlide = adSlides.length - 1;
+    
+    if (adSlides[currentAdSlide]) adSlides[currentAdSlide].classList.add('active');
+    if (adDots[currentAdSlide]) adDots[currentAdSlide].classList.add('active');
+  }
+
+  function nextAdSlide() {
+    goToAdSlide(currentAdSlide + 1);
+  }
+
+  if (adSlides.length > 0) {
+    // Auto slide every 4 seconds
+    adSlideInterval = setInterval(nextAdSlide, 4000);
+
+    // Dot click handling
+    adDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        clearInterval(adSlideInterval); // Stop auto-slide when user interacts
+        goToAdSlide(index);
+        adSlideInterval = setInterval(nextAdSlide, 4000); // Restart auto-slide
+      });
+    });
+    
+    // Pause on hover
+    const sliderContainer = document.getElementById('ad-slider-container');
+    if (sliderContainer) {
+      sliderContainer.addEventListener('mouseenter', () => clearInterval(adSlideInterval));
+      sliderContainer.addEventListener('mouseleave', () => {
+        adSlideInterval = setInterval(nextAdSlide, 4000);
+      });
+    }
+  }
+
+
+  /* -------------------------------------------------
+     11. HERO MOUSE-FOLLOW GRADIENT (DISABLED)
      ------------------------------------------------- 
      Disabled because it overwrites the hero-bg.png image 
      with a solid gradient when the mouse moves.
