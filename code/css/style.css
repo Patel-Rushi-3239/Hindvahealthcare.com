@@ -586,49 +586,120 @@ body.loaded #loader {
   flex-wrap: wrap;
 }
 
-.hero-stats {
-  display: flex;
-  gap: 50px;
-  justify-content: center;
-  margin-top: 80px;
-  flex-wrap: wrap;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  padding: 30px 60px;
-  border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  display: inline-flex; /* Keeps the glass box wrapped tightly around items */
-}
-
-/* Add a wrapper to center the inline-flex container */
+/* Hero Stats — Premium Glassmorphic Card */
 .hero-stats-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 60px;
+}
+
+.hero-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 35px 55px;
+  border-radius: 20px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(13, 71, 161, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Animated gradient border glow */
+.hero-stats::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #0d47a1, #00e5ff, #00bf58, #0d47a1);
+  background-size: 300% 300%;
+  animation: statsBorderGlow 4s ease infinite;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+/* Inner white fill */
+.hero-stats::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  z-index: -1;
+}
+
+@keyframes statsBorderGlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Stat Divider */
+.stat-divider {
+  width: 1px;
+  height: 70px;
+  background: linear-gradient(to bottom, transparent, rgba(13, 71, 161, 0.2), transparent);
+  margin: 0 10px;
 }
 
 .stat-item {
   text-align: center;
-  padding: 0 20px;
+  padding: 10px 30px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Stat Icon */
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 12px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  color: #ffffff;
+  font-size: 20px;
+  box-shadow: 0 8px 20px rgba(13, 71, 161, 0.3);
+  transition: all 0.4s ease;
+}
+
+.stat-item:hover .stat-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 30px rgba(13, 71, 161, 0.4);
 }
 
 .stat-number {
   font-family: var(--font-heading);
-  font-size: 56px;
+  font-size: 44px;
   font-weight: 900;
-  color: #0d47a1;
-  text-shadow: 0 4px 15px rgba(13, 71, 161, 0.25);
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.1;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .stat-label {
-  font-size: 15px;
-  color: #1a1a2e;
-  font-weight: 800;
-  letter-spacing: 1.5px;
+  font-size: 13px;
+  color: #555;
+  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
