@@ -592,28 +592,43 @@ body.loaded #loader {
   justify-content: center;
   margin-top: 80px;
   flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 30px 60px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  display: inline-flex; /* Keeps the glass box wrapped tightly around items */
+}
+
+/* Add a wrapper to center the inline-flex container */
+.hero-stats-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .stat-item {
   text-align: center;
+  padding: 0 20px;
 }
 
 .stat-number {
   font-family: var(--font-heading);
-  font-size: 48px;
-  font-weight: 800;
-  background: var(--gradient-cyan-green);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.2;
+  font-size: 56px;
+  font-weight: 900;
+  color: #0d47a1;
+  text-shadow: 0 4px 15px rgba(13, 71, 161, 0.25);
+  line-height: 1.1;
+  margin-bottom: 5px;
 }
 
 .stat-label {
-  font-size: 14px;
-  color: var(--light-gray);
-  margin-top: 5px;
-  letter-spacing: 1px;
+  font-size: 15px;
+  color: #1a1a2e;
+  font-weight: 800;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 
