@@ -24,7 +24,7 @@
   --shadow-glow-green: 0 4px 25px rgba(0, 191, 88, 0.15);
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
-  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ------------------------------------------------------------
@@ -1633,6 +1633,12 @@ body.loaded #loader {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08), var(--shadow-glow-cyan);
 }
 
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
 .form-group {
   margin-bottom: 25px;
 }
@@ -1731,6 +1737,113 @@ body.loaded #loader {
 
 .submit-btn:hover::before {
   animation: shimmer 0.6s ease forwards;
+}
+
+/* Select Dropdown Custom Styling */
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230099cc' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 42px;
+  cursor: pointer;
+}
+
+/* Elegant Placeholder Color Styling for Select when Invalid (e.g. placeholder is selected) */
+.form-group select:invalid {
+  color: rgba(85, 85, 85, 0.5);
+}
+
+.form-group select:valid {
+  color: #1a1a2e;
+}
+
+.form-group select option {
+  background: #ffffff;
+  color: #1a1a2e;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.form-group select option:disabled {
+  color: rgba(85, 85, 85, 0.4);
+}
+
+/* Inline Form Feedback Messages */
+.form-feedback {
+  display: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.5;
+  animation: feedbackSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-feedback.show {
+  display: flex;
+}
+
+.form-feedback.success {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.08), rgba(0, 191, 88, 0.06));
+  border: 1px solid rgba(76, 175, 80, 0.25);
+  color: #2e7d32;
+}
+
+.form-feedback.error {
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.08), rgba(229, 57, 53, 0.06));
+  border: 1px solid rgba(244, 67, 54, 0.25);
+  color: #c62828;
+}
+
+.form-feedback i {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+@keyframes feedbackSlideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Submit Button States */
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.submit-btn.loading .btn-text {
+  opacity: 0.8;
+}
+
+.submit-btn.loading .btn-icon {
+  display: none;
+}
+
+.submit-btn.loading .btn-spinner {
+  display: inline-block !important;
+}
+
+/* Validation Error State */
+.form-group input.input-error,
+.form-group textarea.input-error,
+.form-group select.input-error {
+  border-color: #e53935;
+  box-shadow: 0 0 12px rgba(229, 57, 53, 0.12);
+}
+
+.form-group .field-error {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: 6px;
+  display: block;
+  font-weight: 500;
 }
 
 .contact-info {
@@ -2061,6 +2174,11 @@ body.loaded #loader {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .global-stats {
@@ -2491,7 +2609,7 @@ body.loaded #loader {
 
 /* Override default AOS duration */
 [data-aos] {
-  transition-duration: 0.8s;
+  transition-duration: 0.5s;
 }
 
 /* Override AOS easing for smoother feel */
@@ -2651,7 +2769,7 @@ body.loaded #loader {
 /* Disable AOS on mobile for performance */
 @media (max-width: 768px) {
   [data-aos] {
-    transition-duration: 0.5s;
+    transition-duration: 0.35s;
   }
 }
 
@@ -2694,7 +2812,7 @@ body.loaded #loader {
 .tilt-card {
   transform-style: preserve-3d;
   perspective: 1000px;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
@@ -2704,7 +2822,7 @@ body.loaded #loader {
 
 .tilt-card .tilt-card-inner {
   transform: translateZ(30px);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tilt-card:hover .tilt-card-inner {

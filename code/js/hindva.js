@@ -41,7 +41,7 @@
     }
 
     const suffix = element.getAttribute('data-suffix') || '';
-    const duration = 2000;
+    const duration = 1200;
     let startTime = null;
 
     function step(timestamp) {
@@ -383,7 +383,7 @@
   }
 
   if (typeof AOS !== 'undefined') {
-    AOS.init({ duration: 1000, easing: 'ease-out-cubic', once: true, offset: 100 });
+    AOS.init({ duration: 600, easing: 'ease-out-cubic', once: true, offset: 100 });
   }
 
   /* -------------------------------------------------
@@ -393,11 +393,11 @@
     if (typeof gsap === 'undefined') return;
     const heroTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
     heroTimeline
-      .fromTo('.hero-badge', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.2 })
-      .fromTo('#hero h1', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.4')
-      .fromTo('#hero p', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.4')
-      .fromTo('.hero-buttons', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.4')
-      .fromTo('.hero-stats', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.4');
+      .fromTo('.hero-badge', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, delay: 0.15 })
+      .fromTo('#hero h1', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.25')
+      .fromTo('#hero p', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.25')
+      .fromTo('.hero-buttons', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.25')
+      .fromTo('.hero-stats', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.25');
   }
 
   function waitForLoader() {
@@ -434,9 +434,9 @@
       const tl = gsap.timeline({
         scrollTrigger: { trigger: title, start: 'top 80%', end: 'bottom 20%', toggleActions: 'play none none none' },
       });
-      if (h2) tl.fromTo(h2, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' });
-      if (line) tl.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
-      if (p) tl.fromTo(p, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, '-=0.3');
+      if (h2) tl.fromTo(h2, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' });
+      if (line) tl.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: 'power2.out' }, '-=0.2');
+      if (p) tl.fromTo(p, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, '-=0.2');
     });
   }
 
@@ -451,7 +451,7 @@
       if (cards.length === 0) return;
       ScrollTrigger.batch(cards, {
         onEnter: function (batch) {
-          gsap.fromTo(batch, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out', overwrite: true });
+          gsap.fromTo(batch, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: 'power3.out', overwrite: true });
         },
         start: 'top 85%',
         once: true,
@@ -468,7 +468,7 @@
     if (timelineItems.length === 0) return;
     ScrollTrigger.batch(timelineItems, {
       onEnter: function (batch) {
-        gsap.fromTo(batch, { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.9, stagger: 0.2, ease: 'power3.out', overwrite: true });
+        gsap.fromTo(batch, { x: -35, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, stagger: 0.1, ease: 'power3.out', overwrite: true });
       },
       start: 'top 85%',
       once: true,
@@ -483,10 +483,10 @@
     const contactForm = document.querySelector('.contact-form');
     const contactInfo = document.querySelector('.contact-info');
     if (contactForm) {
-      gsap.fromTo(contactForm, { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: contactForm, start: 'top 80%', toggleActions: 'play none none none' } });
+      gsap.fromTo(contactForm, { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out', scrollTrigger: { trigger: contactForm, start: 'top 80%', toggleActions: 'play none none none' } });
     }
     if (contactInfo) {
-      gsap.fromTo(contactInfo, { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: contactInfo, start: 'top 80%', toggleActions: 'play none none none' } });
+      gsap.fromTo(contactInfo, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out', scrollTrigger: { trigger: contactInfo, start: 'top 80%', toggleActions: 'play none none none' } });
     }
   }
 
@@ -542,8 +542,8 @@
         y: randomY ? Math.random() * heroCanvas.height : heroCanvas.height + Math.random() * 60,
         size, type,
         color: colorBase + opacity + ')',
-        speedY: -(0.15 + Math.random() * 0.55),
-        speedX: (Math.random() - 0.5) * 0.4,
+        speedY: -(0.25 + Math.random() * 0.7),
+        speedX: (Math.random() - 0.5) * 0.5,
         rotation: Math.random() * Math.PI * 2,
         rotationSpeed: (Math.random() - 0.5) * 0.02,
       };
@@ -693,7 +693,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () {
       document.body.classList.add('loaded');
-    }, 2000);
+    }, 800);
   });
 
   /* -------------------------------------------------
@@ -930,78 +930,171 @@
   });
 
   /* -------------------------------------------------
-     9. CONTACT FORM
+     9. CONTACT FORM — Enhanced with Validation & FormSubmit.co
      ------------------------------------------------- */
   const contactForm = document.getElementById('contact-form');
 
   if (contactForm) {
+    var formCooldown = false;
+
+    /* ---- Validation Helpers ---- */
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function clearFieldErrors() {
+      contactForm.querySelectorAll('.input-error').forEach(function (el) {
+        el.classList.remove('input-error');
+      });
+      contactForm.querySelectorAll('.field-error').forEach(function (el) {
+        el.remove();
+      });
+    }
+
+    function showFieldError(fieldId, message) {
+      var field = document.getElementById(fieldId);
+      if (!field) return;
+      field.classList.add('input-error');
+      var errSpan = document.createElement('span');
+      errSpan.className = 'field-error';
+      errSpan.textContent = message;
+      field.parentNode.appendChild(errSpan);
+    }
+
+    function validateForm() {
+      clearFieldErrors();
+      var valid = true;
+      var nameVal = document.getElementById('name').value.trim();
+      var emailVal = document.getElementById('email').value.trim();
+      var subjectEl = document.getElementById('subject');
+      var messageVal = document.getElementById('message').value.trim();
+
+      if (!nameVal) {
+        showFieldError('name', 'Please enter your name');
+        valid = false;
+      }
+      if (!emailVal) {
+        showFieldError('email', 'Please enter your email address');
+        valid = false;
+      } else if (!isValidEmail(emailVal)) {
+        showFieldError('email', 'Please enter a valid email address');
+        valid = false;
+      }
+      if (subjectEl && !subjectEl.value) {
+        showFieldError('subject', 'Please select an inquiry type');
+        valid = false;
+      }
+      if (!messageVal) {
+        showFieldError('message', 'Please enter your message');
+        valid = false;
+      } else if (messageVal.length < 10) {
+        showFieldError('message', 'Message must be at least 10 characters');
+        valid = false;
+      }
+      return valid;
+    }
+
+    /* ---- Feedback Message ---- */
+    function showFeedback(type, message) {
+      var feedback = document.getElementById('form-feedback');
+      if (!feedback) return;
+      var icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+      feedback.className = 'form-feedback show ' + type;
+      feedback.innerHTML = '<i class="fas ' + icon + '"></i> ' + message;
+    }
+
+    function hideFeedback() {
+      var feedback = document.getElementById('form-feedback');
+      if (feedback) {
+        feedback.className = 'form-feedback';
+        feedback.innerHTML = '';
+      }
+    }
+
+    /* ---- Button States ---- */
+    function setButtonLoading(btn, loading) {
+      if (loading) {
+        btn.classList.add('loading');
+        btn.disabled = true;
+      } else {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    }
+
+    /* ---- Clear errors on input ---- */
+    contactForm.querySelectorAll('input, textarea, select').forEach(function (field) {
+      field.addEventListener('input', function () {
+        this.classList.remove('input-error');
+        var errEl = this.parentNode.querySelector('.field-error');
+        if (errEl) errEl.remove();
+      });
+      field.addEventListener('change', function () {
+        this.classList.remove('input-error');
+        var errEl = this.parentNode.querySelector('.field-error');
+        if (errEl) errEl.remove();
+      });
+    });
+
+    /* ---- Form Submit Handler ---- */
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      
-      const submitBtn = document.getElementById('contact-submit-btn');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
-      submitBtn.disabled = true;
+      hideFeedback();
 
-      const formData = new FormData(contactForm);
-      formData.append('_subject', 'New Contact Form Inquiry - Hindva Healthcare');
-      formData.append('_captcha', 'false');
+      // Cooldown check
+      if (formCooldown) {
+        showFeedback('error', 'Please wait 30 seconds before submitting again.');
+        return;
+      }
+
+      // Validate
+      if (!validateForm()) {
+        showFeedback('error', 'Please fix the errors above and try again.');
+        return;
+      }
+
+      var submitBtn = document.getElementById('contact-submit-btn');
+      setButtonLoading(submitBtn, true);
+
+      var formData = new FormData(contactForm);
+      // Set reply-to so you can directly reply to the sender from your email
+      formData.append('_replyto', document.getElementById('email').value.trim());
 
       fetch("https://formsubmit.co/ajax/hindvahealthcare@gmail.com", {
         method: "POST",
         headers: { 'Accept': 'application/json' },
         body: formData
       })
-      .then(response => response.json())
-      .then(data => {
+      .then(function (response) { return response.json(); })
+      .then(function (data) {
         if (data.success === 'false' || data.success === false) {
-          throw new Error(data.message || 'API rejected the submission.');
+          throw new Error(data.message || 'Submission was rejected.');
         }
-        
-        const successMsg = document.createElement('div');
-        successMsg.className = 'form-success-message';
-        successMsg.innerHTML =
-          '<div class="success-icon">&#10003;</div>' +
-          '<h3 style="margin-bottom:10px;font-size:24px;">Message Sent!</h3>' +
-          '<p style="margin:0;font-size:16px;">Thank you for contacting us. We will get back to you shortly.</p>';
-        
-        const successMsgStyle =
-          'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);' +
-          'background:linear-gradient(135deg,rgba(255,255,255,0.97),rgba(240,244,248,0.97));' +
-          'border:1px solid rgba(0,229,255,0.3);border-radius:16px;padding:40px;' +
-          'text-align:center;z-index:10000;color:#1a1a2e;min-width:320px;' +
-          'box-shadow:0 20px 60px rgba(0,0,0,0.1),0 0 40px rgba(13,71,161,0.1);';
-        
-        const successIconStyle =
-          'width:60px;height:60px;border-radius:50%;' +
-          'background:linear-gradient(135deg,#00e5ff,#00ff88);' +
-          'display:flex;align-items:center;justify-content:center;' +
-          'margin:0 auto 16px;font-size:28px;font-weight:bold;color:#0a1628;';
-          
-        successMsg.style.cssText = successMsgStyle;
-        document.body.appendChild(successMsg);
-        
-        const iconEl = successMsg.querySelector('.success-icon');
-        if (iconEl) iconEl.style.cssText = successIconStyle;
-        
+
+        // Success
+        showFeedback('success', 'Message sent successfully! We\'ll get back to you within 24 hours. A confirmation email has been sent to your inbox.');
         contactForm.reset();
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-        
+        setButtonLoading(submitBtn, false);
+
+        // Cooldown — prevent duplicate submissions for 30 seconds
+        formCooldown = true;
+        submitBtn.disabled = true;
         setTimeout(function () {
-          successMsg.style.opacity = '0';
-          successMsg.style.transition = 'opacity 0.4s ease';
-          setTimeout(function () { if (successMsg.parentNode) successMsg.parentNode.removeChild(successMsg); }, 400);
-        }, 3500);
+          formCooldown = false;
+          submitBtn.disabled = false;
+        }, 30000);
+
+        // Auto-hide success message after 8 seconds
+        setTimeout(function () { hideFeedback(); }, 8000);
       })
-      .catch(error => {
-        console.error(error);
-        alert('Could not send email right now.\n(Note: If you are running this website from a local folder, the email API blocks it. It will work once uploaded to a server).');
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
+      .catch(function (error) {
+        console.error('Contact form error:', error);
+        setButtonLoading(submitBtn, false);
+        showFeedback('error', 'Could not send your message. Please try again, or email us directly at hindvahealthcare@gmail.com');
       });
     });
   }
+
 
   /* -------------------------------------------------
      10. HERO MOUSE-FOLLOW GRADIENT (DISABLED)
