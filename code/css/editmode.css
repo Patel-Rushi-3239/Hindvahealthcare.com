@@ -1,0 +1,804 @@
+/* ============================================================
+   EDIT MODE — Admin Panel Styles
+   Hindva Healthcare Pvt. Ltd.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   LOGIN MODAL
+   ------------------------------------------------------------ */
+.em-login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+}
+
+.em-login-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.em-login-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 44px 40px;
+  width: 380px;
+  max-width: 92vw;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.em-login-overlay.active .em-login-box {
+  transform: scale(1) translateY(0);
+}
+
+.em-login-box .em-login-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #999;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.em-login-box .em-login-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.em-login-box .em-login-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.em-login-box h3 {
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.em-login-box .em-login-subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 28px;
+}
+
+.em-login-field {
+  margin-bottom: 16px;
+}
+
+.em-login-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.em-login-field input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #1a1a2e;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.em-login-field input:focus {
+  border-color: #0d47a1;
+  box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.08);
+}
+
+.em-login-error {
+  background: #fff5f5;
+  border: 1px solid #ffcdd2;
+  color: #c62828;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  display: none;
+  text-align: center;
+}
+
+.em-login-error.show {
+  display: block;
+}
+
+.em-login-btn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 6px;
+}
+
+.em-login-btn:hover {
+  background: linear-gradient(135deg, #1565c0, #1976d2);
+  box-shadow: 0 4px 15px rgba(13, 71, 161, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ------------------------------------------------------------
+   ADMIN TOOLBAR
+   ------------------------------------------------------------ */
+.em-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+}
+
+.em-toolbar.active {
+  transform: translateY(0);
+}
+
+body.em-active {
+  padding-top: 50px;
+}
+
+body.em-active #navbar {
+  top: 50px;
+}
+
+.em-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.em-toolbar-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.em-toolbar-indicator .em-dot {
+  width: 8px;
+  height: 8px;
+  background: #4caf50;
+  border-radius: 50%;
+  animation: emPulse 2s ease-in-out infinite;
+}
+
+@keyframes emPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+.em-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.em-toolbar-btn {
+  padding: 7px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.em-toolbar-btn.em-btn-save {
+  background: #4caf50;
+  color: #fff;
+}
+
+.em-toolbar-btn.em-btn-save:hover {
+  background: #43a047;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4);
+}
+
+.em-toolbar-btn.em-btn-add {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.em-toolbar-btn.em-btn-add:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.em-toolbar-btn.em-btn-reset {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.em-toolbar-btn.em-btn-reset:hover {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffab40;
+}
+
+.em-toolbar-btn.em-btn-logout {
+  background: rgba(244, 67, 54, 0.15);
+  color: #ff8a80;
+}
+
+.em-toolbar-btn.em-btn-logout:hover {
+  background: rgba(244, 67, 54, 0.3);
+  color: #fff;
+}
+
+.em-toolbar-btn.em-btn-export {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.em-toolbar-btn.em-btn-export:hover {
+  background: rgba(0, 153, 204, 0.2);
+  color: #4fc3f7;
+}
+
+/* Change counter badge */
+.em-change-badge {
+  display: none;
+  align-items: center;
+  padding: 3px 10px;
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffab40;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  letter-spacing: 0.3px;
+}
+
+/* ------------------------------------------------------------
+   EDITABLE ELEMENTS
+   ------------------------------------------------------------ */
+body.em-active [data-editable] {
+  position: relative;
+  outline: 1.5px dashed transparent;
+  outline-offset: 4px;
+  border-radius: 4px;
+  transition: outline-color 0.2s ease, background 0.2s ease;
+  cursor: text;
+  min-height: 1em;
+}
+
+body.em-active [data-editable]:hover {
+  outline-color: rgba(13, 71, 161, 0.25);
+  background: rgba(13, 71, 161, 0.02);
+}
+
+body.em-active [data-editable]:focus {
+  outline-color: #0d47a1;
+  outline-style: solid;
+  background: rgba(13, 71, 161, 0.03);
+}
+
+body.em-active [data-editable]::after {
+  content: '✏️';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 11px;
+  background: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+body.em-active [data-editable]:hover::after {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   IMAGE EDIT OVERLAY
+   ------------------------------------------------------------ */
+body.em-active [data-editable-img] {
+  position: relative;
+  cursor: pointer;
+}
+
+.em-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 71, 161, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: inherit;
+  z-index: 5;
+  pointer-events: none;
+}
+
+body.em-active [data-editable-img]:hover .em-img-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.em-img-overlay span {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 16px;
+  border-radius: 8px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------
+   PRODUCT DELETE BUTTON
+   ------------------------------------------------------------ */
+.em-delete-product {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: #ef5350;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
+}
+
+.em-delete-product:hover {
+  background: #d32f2f;
+  transform: scale(1.1);
+}
+
+body.em-active .em-delete-product {
+  display: flex;
+}
+
+/* Edit product button */
+.em-edit-product {
+  position: absolute;
+  top: 10px;
+  right: 48px;
+  width: 32px;
+  height: 32px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+}
+
+.em-edit-product:hover {
+  background: #1565c0;
+  transform: scale(1.1);
+}
+
+body.em-active .em-edit-product {
+  display: flex;
+}
+
+/* ------------------------------------------------------------
+   ADD / EDIT PRODUCT MODAL
+   ------------------------------------------------------------ */
+.em-product-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.em-product-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.em-product-modal {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 36px;
+  width: 520px;
+  max-width: 92vw;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.em-product-overlay.active .em-product-modal {
+  transform: scale(1) translateY(0);
+}
+
+.em-product-modal::-webkit-scrollbar {
+  width: 4px;
+}
+
+.em-product-modal::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.em-product-modal h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.em-product-modal h3 i {
+  color: #0d47a1;
+}
+
+.em-product-field {
+  margin-bottom: 16px;
+}
+
+.em-product-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.em-product-field input,
+.em-product-field textarea,
+.em-product-field select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1a1a2e;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.em-product-field textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.em-product-field input:focus,
+.em-product-field textarea:focus {
+  border-color: #0d47a1;
+}
+
+.em-product-field .em-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.em-product-field .em-benefit-row {
+  display: flex;
+  gap: 6px;
+}
+
+.em-product-field .em-benefit-row input {
+  flex: 1;
+}
+
+.em-product-field .em-benefit-remove {
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: #ffebee;
+  color: #e53935;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.em-product-field .em-benefit-remove:hover {
+  background: #ffcdd2;
+}
+
+.em-benefit-add-btn {
+  padding: 7px 14px;
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px dashed #90caf9;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: all 0.2s ease;
+}
+
+.em-benefit-add-btn:hover {
+  background: #bbdefb;
+}
+
+.em-product-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.em-product-actions button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.em-product-actions .em-product-save {
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  color: #fff;
+}
+
+.em-product-actions .em-product-save:hover {
+  box-shadow: 0 4px 12px rgba(13, 71, 161, 0.3);
+}
+
+.em-product-actions .em-product-cancel {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.em-product-actions .em-product-cancel:hover {
+  background: #eee;
+}
+
+/* ------------------------------------------------------------
+   IMAGE URL INPUT MODAL
+   ------------------------------------------------------------ */
+.em-imgurl-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.em-imgurl-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.em-imgurl-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 28px;
+  width: 400px;
+  max-width: 90vw;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.em-imgurl-box h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+
+.em-imgurl-box input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 14px;
+}
+
+.em-imgurl-box input:focus {
+  border-color: #0d47a1;
+}
+
+.em-imgurl-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.em-imgurl-actions button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.em-imgurl-actions .em-imgurl-save {
+  background: #0d47a1;
+  color: #fff;
+}
+
+.em-imgurl-actions .em-imgurl-cancel {
+  background: #f5f5f5;
+  color: #666;
+}
+
+/* ------------------------------------------------------------
+   TOAST NOTIFICATION
+   ------------------------------------------------------------ */
+.em-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #1a1a2e;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 100001;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.em-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.em-toast.success {
+  background: linear-gradient(135deg, #2e7d32, #43a047);
+}
+
+.em-toast.error {
+  background: linear-gradient(135deg, #c62828, #e53935);
+}
+
+.em-toast.info {
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  .em-toolbar {
+    padding: 0 12px;
+    height: 46px;
+  }
+
+  body.em-active {
+    padding-top: 46px;
+  }
+
+  body.em-active #navbar {
+    top: 46px;
+  }
+
+  .em-toolbar-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .em-toolbar-btn span.em-btn-text {
+    display: none;
+  }
+
+  .em-toolbar-indicator {
+    font-size: 11px;
+  }
+
+  .em-change-badge {
+    display: none !important;
+  }
+
+  .em-product-modal {
+    padding: 24px;
+  }
+}
