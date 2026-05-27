@@ -345,20 +345,20 @@
     var style = document.createElement('style');
     style.textContent =
       '@keyframes dotPulse {' +
-        '0% { opacity: 0.4; transform: scale(1); }' +
-        '50% { opacity: 0.15; transform: scale(1.8); }' +
-        '100% { opacity: 0.4; transform: scale(1); }' +
+      '0% { opacity: 0.4; transform: scale(1); }' +
+      '50% { opacity: 0.15; transform: scale(1.8); }' +
+      '100% { opacity: 0.4; transform: scale(1); }' +
       '}' +
       '.dot-pulse { animation: dotPulse 3s ease-in-out infinite; }' +
       '.dot-group:nth-child(odd) .dot-pulse { animation-delay: -1.5s; }' +
       '.dot-group:nth-child(3n) .dot-pulse { animation-duration: 3.5s; }' +
       '.dot-group:nth-child(5n) .dot-pulse { animation-duration: 2.5s; }' +
       '@keyframes dotBreathe {' +
-        '0%, 100% { opacity: 0.85; } 50% { opacity: 1; }' +
+      '0%, 100% { opacity: 0.85; } 50% { opacity: 1; }' +
       '}' +
       '.map-dot { animation: dotBreathe 2.5s ease-in-out infinite; }' +
       '@keyframes dashFlow {' +
-        '0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -20; }' +
+      '0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -20; }' +
       '}';
     document.head.appendChild(style);
   }
@@ -880,23 +880,23 @@
     product.benefits.forEach(function (b) { benefitsHTML += '<li>' + b + '</li>'; });
     modalBody.innerHTML =
       '<div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start;">' +
-        '<div style="flex: 1 1 250px; text-align: center;">' +
-          '<img src="' + product.image + '" alt="' + product.name + '" style="max-width: 100%; height: auto; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">' +
-        '</div>' +
-        '<div style="flex: 2 1 300px;">' +
-          '<div class="modal-header" style="margin-bottom: 20px;">' +
-            '<span class="modal-icon">' + product.icon + '</span>' +
-            '<div><span class="modal-category">' + product.category + '</span>' +
-            '<h2 style="margin: 0 0 5px 0;">' + product.name + '</h2>' +
-            '<p class="modal-tagline" style="margin: 0;">' + product.tagline + '</p></div>' +
-          '</div>' +
-          '<div class="modal-details">' +
-            '<div class="modal-composition"><strong>Composition:</strong> ' + product.composition + '</div>' +
-            '<p class="modal-description">' + product.description + '</p>' +
-            '<h3>Key Benefits</h3>' +
-            '<ul class="modal-benefits">' + benefitsHTML + '</ul>' +
-          '</div>' +
-        '</div>' +
+      '<div style="flex: 1 1 250px; text-align: center;">' +
+      '<img src="' + product.image + '" alt="' + product.name + '" style="max-width: 100%; height: auto; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">' +
+      '</div>' +
+      '<div style="flex: 2 1 300px;">' +
+      '<div class="modal-header" style="margin-bottom: 20px;">' +
+      '<span class="modal-icon">' + product.icon + '</span>' +
+      '<div><span class="modal-category">' + product.category + '</span>' +
+      '<h2 style="margin: 0 0 5px 0;">' + product.name + '</h2>' +
+      '<p class="modal-tagline" style="margin: 0;">' + product.tagline + '</p></div>' +
+      '</div>' +
+      '<div class="modal-details">' +
+      '<div class="modal-composition"><strong>Composition:</strong> ' + product.composition + '</div>' +
+      '<p class="modal-description">' + product.description + '</p>' +
+      '<h3>Key Benefits</h3>' +
+      '<ul class="modal-benefits">' + benefitsHTML + '</ul>' +
+      '</div>' +
+      '</div>' +
       '</div>';
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -1065,33 +1065,43 @@
         headers: { 'Accept': 'application/json' },
         body: formData
       })
-      .then(function (response) { return response.json(); })
-      .then(function (data) {
-        if (data.success === 'false' || data.success === false) {
-          throw new Error(data.message || 'Submission was rejected.');
-        }
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('AJAX submission failed with status ' + response.status);
+          }
+          return response.json();
+        })
+        .then(function (data) {
+          if (data.success === 'false' || data.success === false) {
+            throw new Error(data.message || 'Submission was rejected.');
+          }
 
-        // Success
-        showFeedback('success', 'Message sent successfully! We\'ll get back to you within 24 hours. A confirmation email has been sent to your inbox.');
-        contactForm.reset();
-        setButtonLoading(submitBtn, false);
+          // Success
+          showFeedback('success', 'Message sent successfully! We\'ll get back to you within 24 hours. A confirmation email has been sent to your inbox.');
+          contactForm.reset();
+          setButtonLoading(submitBtn, false);
 
-        // Cooldown — prevent duplicate submissions for 30 seconds
-        formCooldown = true;
-        submitBtn.disabled = true;
-        setTimeout(function () {
-          formCooldown = false;
-          submitBtn.disabled = false;
-        }, 30000);
+          // Cooldown — prevent duplicate submissions for 30 seconds
+          formCooldown = true;
+          submitBtn.disabled = true;
+          setTimeout(function () {
+            formCooldown = false;
+            submitBtn.disabled = false;
+          }, 30000);
 
-        // Auto-hide success message after 8 seconds
-        setTimeout(function () { hideFeedback(); }, 8000);
-      })
-      .catch(function (error) {
-        console.error('Contact form error:', error);
-        setButtonLoading(submitBtn, false);
-        showFeedback('error', 'Could not send your message. Please try again, or email us directly at hindvahealthcare@gmail.com');
-      });
+          // Auto-hide success message after 8 seconds
+          setTimeout(function () { hideFeedback(); }, 8000);
+        })
+        .catch(function (error) {
+          console.error('Contact form error:', error);
+
+          // Dynamic Fallback: If unactivated or block detected, submit natively to let FormSubmit trigger activation!
+          showFeedback('error', 'Form unactivated or connection error. Redirecting to securely complete verification...');
+
+          setTimeout(function () {
+            contactForm.submit();
+          }, 2000);
+        });
     });
   }
 
