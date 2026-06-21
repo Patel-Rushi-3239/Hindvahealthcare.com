@@ -3526,15 +3526,15 @@ body.loaded #loader {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   background: #25D366;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 30px;
+  font-size: 24px;
   z-index: 999;
   cursor: pointer;
   text-decoration: none;
@@ -3733,15 +3733,10 @@ body.loaded #loader {
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(0.5);
 }
 
 .fab-circle.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
+  /* Kept for backward compatibility if JS adds it, but not strictly needed anymore */
 }
 
 .fab-circle:hover {
@@ -3807,11 +3802,10 @@ body.loaded #loader {
   background: #0d8a4e;
   box-shadow: 0 6px 25px rgba(13, 138, 78, 0.4);
   animation: fabEnquirePulse 2.5s ease-in-out infinite;
-  animation-play-state: paused;
 }
 
 .fab-enquire.visible {
-  animation-play-state: running;
+  /* Legacy JS class */
 }
 
 .fab-enquire:hover {
@@ -3837,12 +3831,11 @@ body.loaded #loader {
   background: #0d47a1;
   box-shadow: 0 6px 25px rgba(13, 71, 161, 0.4);
   animation: fabCallPulse 2.5s ease-in-out infinite;
-  animation-play-state: paused;
   animation-delay: 0.5s;
 }
 
 .fab-call.visible {
-  animation-play-state: running;
+  /* Legacy JS class */
 }
 
 .fab-call:hover {
@@ -3868,12 +3861,11 @@ body.loaded #loader {
   background: #00796b;
   box-shadow: 0 6px 25px rgba(0, 121, 107, 0.4);
   animation: fabLocationPulse 2.5s ease-in-out infinite;
-  animation-play-state: paused;
   animation-delay: 1s;
 }
 
 .fab-location.visible {
-  animation-play-state: running;
+  /* Legacy JS class */
 }
 
 .fab-location:hover {
@@ -3899,12 +3891,11 @@ body.loaded #loader {
   background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
   box-shadow: 0 6px 25px rgba(131, 58, 180, 0.4);
   animation: fabInstaPulse 2.5s ease-in-out infinite;
-  animation-play-state: paused;
   animation-delay: 1.5s;
 }
 
 .fab-instagram.visible {
-  animation-play-state: running;
+  /* Legacy JS class */
 }
 
 .fab-instagram:hover {
@@ -3927,7 +3918,7 @@ body.loaded #loader {
    RESPONSIVE — Floating Circle Buttons
    ------------------------------------------------------------ */
 @media (max-width: 768px) {
-  .fab-circle {
+  .fab-circle, .whatsapp-float {
     width: 48px;
     height: 48px;
     font-size: 20px;
@@ -3959,7 +3950,7 @@ body.loaded #loader {
 }
 
 @media (max-width: 480px) {
-  .fab-circle {
+  .fab-circle, .whatsapp-float {
     width: 44px;
     height: 44px;
     font-size: 18px;
