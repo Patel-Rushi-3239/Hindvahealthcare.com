@@ -34,49 +34,49 @@
   var defaultProductData = {
     'rabihin-dsr': {
       name: 'Rabihin-DSR',
-      image: 'images/products/Rabihin-dsr-img.PNG',
+      image: 'images/products/Rabihin-dsr-img-new.jpg?v=2',
       category: 'Gastroenterology',
-      tagline: 'Advanced Gastric Acid Control',
+      tagline: 'Advanced Stomach Acid Control',
       composition: 'Enteric Coated Rabeprazole Sodium & Domperidone SR Capsules',
-      description: 'Rabihin-DSR is a premium dual-action capsule combining Rabeprazole Sodium with Domperidone in sustained-release form. Designed for effective management of gastroesophageal reflux disease (GERD), peptic ulcers, and associated nausea.',
+      description: 'Rabihin-DSR is a high-quality capsule that helps control stomach acid and nausea. It gives you fast and long-lasting relief from heartburn, acid reflux, and stomach ulcers.',
       benefits: [
-        'Rapid and sustained gastric acid suppression',
-        'Effective acid reflux relief and heartburn control',
-        'Enhanced digestive support with Domperidone SR',
-        'Enteric coated for optimal drug release and absorption',
-        'Well-tolerated with minimal side effects'
+        'Fast and long-lasting control of stomach acid',
+        'Quick relief from heartburn and acid reflux',
+        'Helps with digestion and prevents nausea',
+        'Special coating ensures the medicine works where it needs to',
+        'Safe to use with very few side effects'
       ],
       icon: '💊'
     },
     'hincure-ointment': {
       name: 'Hincure Ayurvedic Ointment',
-      image: 'images/products/ointment-img.PNG',
+      image: 'images/products/ointment-img-new.jpg?v=2',
       category: 'Ayurvedic / Topical',
-      tagline: 'Traditional Healing, Modern Science',
+      tagline: 'Natural Healing, Fast Results',
       composition: 'Traditional Ayurvedic Herbal Formula',
-      description: 'Hincure Ayurvedic Ointment is a meticulously formulated topical remedy rooted in centuries-old Ayurvedic wisdom.',
+      description: 'Hincure Ayurvedic Ointment is a 100% natural cream made from a perfect mix of ancient herbs. It is designed to heal skin fast, calm redness, and help your body repair cuts, burns, and rashes naturally.',
       benefits: [
-        'Accelerated skin healing with natural herbal ingredients',
-        'Soothes irritation, redness, and inflammation',
-        '100% natural Ayurvedic formulation',
-        'Multipurpose ointment for cuts, burns, rashes, and dryness',
-        'Safe for regular use across all skin types'
+        'Heals skin fast using natural herbs',
+        'Calms down skin redness and swelling',
+        '100% natural — absolutely no harsh chemicals',
+        'Works great on cuts, burns, rashes, and dry skin',
+        'Safe to use every day on all skin types'
       ],
       icon: '🌿'
     },
     'joint-h': {
       name: 'Joint-H Nutraceuticals',
-      image: 'images/products/joint-H-img.PNG',
+      image: 'images/products/joint-H-img-new.jpg?v=2',
       category: 'Nutraceutical / Orthopedic',
-      tagline: 'Move Freely, Live Fully',
+      tagline: 'Move Freely, Live Pain-Free',
       composition: 'Glucosamine, Boswellia Serrata & Domperidone Capsules',
-      description: 'Joint-H is a scientifically advanced nutraceutical supplement formulated to support joint health, reduce discomfort, and improve mobility.',
+      description: 'Joint-H is an advanced health supplement made to keep your joints healthy, lower pain, and help you move easily. It combines powerful natural ingredients to protect your joints and let you enjoy an active life without pain.',
       benefits: [
-        'Effective joint pain relief and reduced stiffness',
-        'Supports cartilage regeneration with Glucosamine',
-        'Natural anti-inflammatory action from Boswellia Serrata',
-        'Improved joint mobility and flexibility',
-        'Ideal nutraceutical supplement for long-term joint health'
+        'Gives real relief from joint pain and stiffness',
+        'Helps repair and protect your joints',
+        'Naturally lowers swelling and pain',
+        'Helps you move and bend easily',
+        'Perfect everyday supplement for strong joints'
       ],
       icon: '🦴'
     }

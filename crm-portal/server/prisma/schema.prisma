@@ -1,0 +1,232 @@
+// Hindva Healthcare CRM - Prisma Schema
+// This defines all the database tables for the CRM portal
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// USER MODEL (Admin + MR)
+// ============================================
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  mobile    String   @unique
+  password  String
+  role      Role     @default(MR)
+  territory String?
+  status    UserStatus @default(ACTIVE)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  doctorsAssigned  Doctor[]         @relation("AssignedMR")
+  visits           Visit[]
+  ordersPlaced     Order[]
+  tasksAssigned    Task[]           @relation("TaskAssignee")
+  tasksCreated     Task[]           @relation("TaskCreator")
+  transfersFrom   DoctorTransfer[] @relation("TransferFrom")
+  transfersTo     DoctorTransfer[] @relation("TransferTo")
+
+  @@map("users")
+}
+
+enum Role {
+  ADMIN
+  MR
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+// ============================================
+// DOCTOR MODEL
+// ============================================
+model Doctor {
+  id               Int            @id @default(autoincrement())
+  doctorName       String         @map("doctor_name")
+  specialization   String?
+  mobile           String
+  address          String?
+  category         DoctorCategory @default(C)
+  monthlyOrderValue Float         @default(0) @map("monthly_order_value")
+  status           DoctorStatus   @default(ACTIVE)
+  createdAt        DateTime       @default(now()) @map("created_at")
+  updatedAt        DateTime       @updatedAt @map("updated_at")
+
+  // Relations
+  assignedMrId     Int?           @map("assigned_mr_id")
+  assignedMr       User?          @relation("AssignedMR", fields: [assignedMrId], references: [id])
+  visits           Visit[]
+  orders           Order[]
+  transfers        DoctorTransfer[]
+
+  @@map("doctors")
+}
+
+enum DoctorCategory {
+  A // High Prescriber - Visit Every 7 Days
+  B // Medium Prescriber - Visit Every 15 Days
+  C // Low Prescriber - Visit Every 30 Days
+}
+
+enum DoctorStatus {
+  ACTIVE
+  INACTIVE
+}
+
+// ============================================
+// VISIT MODEL
+// ============================================
+model Visit {
+  id            Int         @id @default(autoincrement())
+  visitDate     DateTime    @map("visit_date")
+  visitType     VisitType   @map("visit_type")
+  remarks       String?
+  orderTaken    Boolean     @default(false) @map("order_taken")
+  nextVisitDate DateTime?   @map("next_visit_date")
+  createdAt     DateTime    @default(now()) @map("created_at")
+
+  // Relations
+  doctorId      Int         @map("doctor_id")
+  doctor        Doctor      @relation(fields: [doctorId], references: [id])
+  mrId          Int         @map("mr_id")
+  mr            User        @relation(fields: [mrId], references: [id])
+
+  @@map("visits")
+}
+
+enum VisitType {
+  MET_DOCTOR
+  MET_ASSISTANT
+  CLINIC_CLOSED
+}
+
+// ============================================
+// ORDER MODEL
+// ============================================
+model Order {
+  id           Int         @id @default(autoincrement())
+  products     Json        // Array of { productName, quantity, price }
+  totalAmount  Float       @map("total_amount")
+  status       OrderStatus @default(PENDING)
+  date         DateTime    @default(now())
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+
+  // Relations
+  doctorId     Int         @map("doctor_id")
+  doctor       Doctor      @relation(fields: [doctorId], references: [id])
+  mrId         Int         @map("mr_id")
+  mr           User        @relation(fields: [mrId], references: [id])
+  offerId      Int?        @map("offer_id")
+  offer        Offer?      @relation(fields: [offerId], references: [id])
+
+  @@map("orders")
+}
+
+enum OrderStatus {
+  PENDING
+  APPROVED
+  DISPATCHED
+  CANCELLED
+}
+
+// ============================================
+// OFFER MODEL
+// ============================================
+model Offer {
+  id          Int         @id @default(autoincrement())
+  offerName   String      @map("offer_name")
+  description String?
+  startDate   DateTime    @map("start_date")
+  endDate     DateTime    @map("end_date")
+  status      OfferStatus @default(ACTIVE)
+  createdAt   DateTime    @default(now()) @map("created_at")
+
+  // Relations
+  orders      Order[]
+
+  @@map("offers")
+}
+
+enum OfferStatus {
+  ACTIVE
+  INACTIVE
+}
+
+// ============================================
+// TASK MODEL
+// ============================================
+model Task {
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String?
+  priority    TaskPriority @default(MEDIUM)
+  taskType    TaskType   @default(ONE_TIME) @map("task_type")
+  dueDate     DateTime?  @map("due_date")
+  status      TaskStatus @default(PENDING)
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  // Relations
+  assignedToId Int       @map("assigned_to_id")
+  assignedTo   User      @relation("TaskAssignee", fields: [assignedToId], references: [id])
+  createdById  Int       @map("created_by_id")
+  createdBy    User      @relation("TaskCreator", fields: [createdById], references: [id])
+
+  @@map("tasks")
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum TaskType {
+  ONE_TIME
+  LIFETIME // Recurring
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
+
+// ============================================
+// DOCTOR TRANSFER MODEL
+// ============================================
+model DoctorTransfer {
+  id            Int            @id @default(autoincrement())
+  transferType  TransferType   @map("transfer_type")
+  transferDate  DateTime       @default(now()) @map("transfer_date")
+  endDate       DateTime?      @map("end_date") // null for permanent
+  reason        String?
+  createdAt     DateTime       @default(now()) @map("created_at")
+
+  // Relations
+  doctorId      Int            @map("doctor_id")
+  doctor        Doctor         @relation(fields: [doctorId], references: [id])
+  fromMrId      Int            @map("from_mr_id")
+  fromMr        User           @relation("TransferFrom", fields: [fromMrId], references: [id])
+  toMrId        Int            @map("to_mr_id")
+  toMr          User           @relation("TransferTo", fields: [toMrId], references: [id])
+
+  @@map("doctor_transfers")
+}
+
+enum TransferType {
+  TEMPORARY
+  PERMANENT
+}

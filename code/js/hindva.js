@@ -383,7 +383,7 @@
   }
 
   if (typeof AOS !== 'undefined') {
-    AOS.init({ duration: 600, easing: 'ease-out-cubic', once: true, offset: 100 });
+    AOS.init({ duration: 400, easing: 'ease-out-cubic', once: true, offset: 100 });
   }
 
   /* -------------------------------------------------
@@ -393,11 +393,11 @@
     if (typeof gsap === 'undefined') return;
     const heroTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
     heroTimeline
-      .fromTo('.hero-badge', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, delay: 0.15 })
-      .fromTo('#hero h1', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.25')
-      .fromTo('#hero p', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.25')
-      .fromTo('.hero-buttons', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.25')
-      .fromTo('.hero-stats', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.25');
+      .fromTo('.hero-badge', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, delay: 0.1 })
+      .fromTo('#hero h1', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 }, '-=0.2')
+      .fromTo('#hero p', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 }, '-=0.2')
+      .fromTo('.hero-buttons', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 }, '-=0.2')
+      .fromTo('.hero-stats', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35 }, '-=0.2');
   }
 
   function waitForLoader() {
@@ -434,9 +434,9 @@
       const tl = gsap.timeline({
         scrollTrigger: { trigger: title, start: 'top 80%', end: 'bottom 20%', toggleActions: 'play none none none' },
       });
-      if (h2) tl.fromTo(h2, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' });
-      if (line) tl.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: 'power2.out' }, '-=0.2');
-      if (p) tl.fromTo(p, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, '-=0.2');
+      if (h2) tl.fromTo(h2, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' });
+      if (line) tl.fromTo(line, { scaleX: 0 }, { scaleX: 1, duration: 0.25, ease: 'power2.out' }, '-=0.15');
+      if (p) tl.fromTo(p, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: 'power3.out' }, '-=0.15');
     });
   }
 
@@ -451,7 +451,7 @@
       if (cards.length === 0) return;
       ScrollTrigger.batch(cards, {
         onEnter: function (batch) {
-          gsap.fromTo(batch, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: 'power3.out', overwrite: true });
+          gsap.fromTo(batch, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, stagger: 0.05, ease: 'power3.out', overwrite: true });
         },
         start: 'top 85%',
         once: true,
@@ -468,7 +468,7 @@
     if (timelineItems.length === 0) return;
     ScrollTrigger.batch(timelineItems, {
       onEnter: function (batch) {
-        gsap.fromTo(batch, { x: -35, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, stagger: 0.1, ease: 'power3.out', overwrite: true });
+        gsap.fromTo(batch, { x: -35, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, stagger: 0.06, ease: 'power3.out', overwrite: true });
       },
       start: 'top 85%',
       once: true,
@@ -483,10 +483,10 @@
     const contactForm = document.querySelector('.contact-form');
     const contactInfo = document.querySelector('.contact-info');
     if (contactForm) {
-      gsap.fromTo(contactForm, { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out', scrollTrigger: { trigger: contactForm, start: 'top 80%', toggleActions: 'play none none none' } });
+      gsap.fromTo(contactForm, { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: 'power3.out', scrollTrigger: { trigger: contactForm, start: 'top 80%', toggleActions: 'play none none none' } });
     }
     if (contactInfo) {
-      gsap.fromTo(contactInfo, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out', scrollTrigger: { trigger: contactInfo, start: 'top 80%', toggleActions: 'play none none none' } });
+      gsap.fromTo(contactInfo, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: 'power3.out', scrollTrigger: { trigger: contactInfo, start: 'top 80%', toggleActions: 'play none none none' } });
     }
   }
 
@@ -816,52 +816,52 @@
   const productData = {
     'rabihin-dsr': {
       name: 'Rabihin-DSR',
-      image: 'images/products/Rabihin-dsr-img.PNG',
+      image: 'images/products/Rabihin-dsr-img-new.jpg?v=2',
       category: 'Gastroenterology',
-      tagline: 'Advanced Gastric Acid Control',
+      tagline: 'Advanced Stomach Acid Control',
       composition: 'Enteric Coated Rabeprazole Sodium & Domperidone SR Capsules',
       description:
-        'Rabihin-DSR is a premium dual-action capsule combining Rabeprazole Sodium with Domperidone in sustained-release form. Designed for effective management of gastroesophageal reflux disease (GERD), peptic ulcers, and associated nausea. The enteric coating ensures targeted release for maximum bioavailability.',
+        'Rabihin-DSR is a high-quality capsule that helps control stomach acid and nausea. It gives you fast and long-lasting relief from heartburn, acid reflux, and stomach ulcers.',
       benefits: [
-        'Rapid and sustained gastric acid suppression',
-        'Effective acid reflux relief and heartburn control',
-        'Enhanced digestive support with Domperidone SR',
-        'Enteric coated for optimal drug release and absorption',
-        'Well-tolerated with minimal side effects',
+        'Fast and long-lasting control of stomach acid',
+        'Quick relief from heartburn and acid reflux',
+        'Helps with digestion and prevents nausea',
+        'Special coating ensures the medicine works where it needs to',
+        'Safe to use with very few side effects',
       ],
       icon: '💊',
     },
     'hincure-ointment': {
       name: 'Hincure Ayurvedic Ointment',
-      image: 'images/products/ointment-img.PNG',
+      image: 'images/products/ointment-img-new.jpg?v=2',
       category: 'Ayurvedic / Topical',
-      tagline: 'Traditional Healing, Modern Science',
+      tagline: 'Natural Healing, Fast Results',
       composition: 'Traditional Ayurvedic Herbal Formula',
       description:
-        "Hincure Ayurvedic Ointment is a meticulously formulated topical remedy rooted in centuries-old Ayurvedic wisdom. Crafted from a synergistic blend of natural herbs and botanicals, this multipurpose ointment is designed to promote skin healing, soothe irritation, and support the body's natural repair processes.",
+        'Hincure Ayurvedic Ointment is a 100% natural cream made from a perfect mix of ancient herbs. It is designed to heal skin fast, calm redness, and help your body repair cuts, burns, and rashes naturally.',
       benefits: [
-        'Accelerated skin healing with natural herbal ingredients',
-        'Soothes irritation, redness, and inflammation',
-        '100% natural Ayurvedic formulation — no harsh chemicals',
-        'Multipurpose ointment for cuts, burns, rashes, and dryness',
-        'Safe for regular use across all skin types',
+        'Heals skin fast using natural herbs',
+        'Calms down skin redness and swelling',
+        '100% natural — absolutely no harsh chemicals',
+        'Works great on cuts, burns, rashes, and dry skin',
+        'Safe to use every day on all skin types',
       ],
       icon: '🌿',
     },
     'joint-h': {
       name: 'Joint-H Nutraceuticals',
-      image: 'images/products/joint-H-img.PNG',
+      image: 'images/products/joint-H-img-new.jpg?v=2',
       category: 'Nutraceutical / Orthopedic',
-      tagline: 'Move Freely, Live Fully',
+      tagline: 'Move Freely, Live Pain-Free',
       composition: 'Glucosamine, Boswellia Serrata & Domperidone Capsules',
       description:
-        'Joint-H is a scientifically advanced nutraceutical supplement formulated to support joint health, reduce discomfort, and improve mobility. Combining the cartilage-building properties of Glucosamine with the potent anti-inflammatory action of Boswellia Serrata, Joint-H delivers comprehensive joint care for an active lifestyle.',
+        'Joint-H is an advanced health supplement made to keep your joints healthy, lower pain, and help you move easily. It combines powerful natural ingredients to protect your joints and let you enjoy an active life without pain.',
       benefits: [
-        'Effective joint pain relief and reduced stiffness',
-        'Supports cartilage regeneration with Glucosamine',
-        'Natural anti-inflammatory action from Boswellia Serrata',
-        'Improved joint mobility and flexibility',
-        'Ideal nutraceutical supplement for long-term joint health',
+        'Gives real relief from joint pain and stiffness',
+        'Helps repair and protect your joints',
+        'Naturally lowers swelling and pain',
+        'Helps you move and bend easily',
+        'Perfect everyday supplement for strong joints',
       ],
       icon: '🦴',
     },
@@ -1173,4 +1173,89 @@
       heroSection.style.setProperty('--mouse-y', y + '%');
     });
   }
+
+  /* -------------------------------------------------
+     12. FAQ ACCORDION LOGIC
+     ------------------------------------------------- */
+  const faqQuestions = document.querySelectorAll('.faq-question');
+
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const faqItem = question.parentElement;
+      const answer = faqItem.querySelector('.faq-answer');
+      const isExpanded = question.getAttribute('aria-expanded') === 'true';
+
+      // Close all other active FAQs (optional, but good UX)
+      document.querySelectorAll('.faq-item.active').forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+          const otherQuestion = item.querySelector('.faq-question');
+          const otherAnswer = item.querySelector('.faq-answer');
+          otherQuestion.setAttribute('aria-expanded', 'false');
+          otherAnswer.style.maxHeight = null;
+        }
+      });
+
+      // Toggle current FAQ
+      if (isExpanded) {
+        question.setAttribute('aria-expanded', 'false');
+        faqItem.classList.remove('active');
+        answer.style.maxHeight = null;
+      } else {
+        question.setAttribute('aria-expanded', 'true');
+        faqItem.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+    });
+  });
+
+  /* -------------------------------------------------
+     13. BACK TO TOP BUTTON
+     ------------------------------------------------- */
+  const backToTopBtn = document.getElementById('back-to-top-btn');
+
+  if (backToTopBtn) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    backToTopBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* -------------------------------------------------
+     13. FLOATING ACTION BUTTONS (INDIVIDUAL CIRCLES)
+     ------------------------------------------------- */
+  const fabCircles = document.querySelectorAll('.fab-circle');
+
+  if (fabCircles.length > 0) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 200) {
+        fabCircles.forEach(function (btn, index) {
+          setTimeout(function () {
+            btn.classList.add('visible');
+          }, index * 120);
+        });
+      } else {
+        fabCircles.forEach(function (btn) {
+          btn.classList.remove('visible');
+        });
+      }
+    }, { passive: true });
+
+    // Show immediately if page is already scrolled (e.g., on refresh)
+    if (window.scrollY > 200) {
+      fabCircles.forEach(function (btn, index) {
+        setTimeout(function () {
+          btn.classList.add('visible');
+        }, index * 120);
+      });
+    }
+  }
 })();
+
